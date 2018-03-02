@@ -1,0 +1,23 @@
+version: "3"
+services:
+  api:
+    build: .
+    command: ./node_modules/nodemon/bin/nodemon.js --inspect=0.0.0.0:5858
+    volumes:
+      - .:/api
+    ports:
+      - "3000:3000"
+      - "5858:5858"
+  app:
+    build:
+      context: ./app
+    environment:
+      - PORT=80
+      - AMPLIFY_IMAGENAME=DEV
+      - AMPLIFY_API_KEY=1b8a8a1f372f002188d08253c2537e3b
+      - APIURL=http://localhost:3000/api
+    volumes:
+      - .:/app
+    ports:
+      - "80:80"
+    network_mode: "host"

@@ -1,0 +1,68 @@
+{
+    // Utilisez IntelliSense pour en savoir plus sur les attributs possibles.
+    // Pointez pour afficher la description des attributs existants.
+    // Pour plus d'informations, visitez : https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "DockerAPI",
+            "port": 5858,
+            "address": "localhost",
+            "restart": true,
+            "sourceMaps": false,
+            "localRoot": "${workspaceRoot}",
+            "remoteRoot": "/api"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "API",
+            "stopOnEntry": false,
+            "cwd": "${workspaceRoot}",
+            "runtimeArgs": [
+                "--nolazy"
+            ],
+            "program": "${workspaceRoot}\/server.js",
+            "runtimeExecutable": null,
+            "restart": false,
+            "trace": "all",
+            "env": {
+                "NODE_ENV": "development"
+            },
+            "protocol": "auto",
+            "outputCapture": "std"
+        },
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "DockerAPP",
+            "port": 80,
+            "address": "localhost",
+            "restart": true,
+            "sourceMaps": false,
+            "localRoot": "${workspaceRoot}",
+            "remoteRoot": "/code"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "DeployScript",
+            "stopOnEntry": false,
+            "cwd": "${workspaceRoot}",
+            "runtimeArgs": [
+                "--nolazy"
+            ],
+            "program": "${workspaceRoot}\/scripts\/deploy.js",
+            "runtimeExecutable": null,
+            "restart": false,
+            "trace": "all",
+            "env": {
+                "NODE_ENV": "development"
+            },
+            "protocol": "auto",
+            "outputCapture": "std"
+        }
+    ]
+}
